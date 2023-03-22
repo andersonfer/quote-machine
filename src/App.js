@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
@@ -122,9 +121,6 @@ class QuoteBox extends Component {
 }
 
 class Text extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div id="text">
@@ -135,9 +131,6 @@ class Text extends Component {
 }
 
 class Author extends Component {
-  constructor(props) {
-    super(props);
-  }
   render(){
     return (
       <div id="author">
@@ -147,9 +140,6 @@ class Author extends Component {
   }
 }
 class TweetButton extends Component{
-    constructor(props){
-      super(props);
-    }
     render() {
       const tweetLink = 'https://twitter.com/intent/tweet?text=' + this.props.text + ' (' + this.props.author + ')';
 
@@ -164,9 +154,6 @@ class TweetButton extends Component{
 }
 
 class NewQuoteButton extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div id="new-quote-button">
