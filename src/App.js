@@ -141,7 +141,7 @@ class Author extends Component {
 }
 class TweetButton extends Component{
     render() {
-      const formattedPhraseForTweet = "\"" + this.props.text + "\"" +  ' (' + this.props.author + ')'
+      const formattedPhraseForTweet = '"' + this.props.text + '"(' + this.props.author + ')'
       const tweetLink = 'https://twitter.com/intent/tweet?text=' + formattedPhraseForTweet;
 
       return (
