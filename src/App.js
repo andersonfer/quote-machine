@@ -146,8 +146,8 @@ class TweetButton extends Component{
 
       return (
         <div id="twitter-button">
-          <a class="button" href={tweetLink} id="tweet-quote" target="_blank" rel="noreferrer">
-            <span class="fa fa-twitter"/>
+          <a className="button" href={tweetLink} id="tweet-quote" target="_blank" rel="noreferrer">
+            <span className="fa fa-twitter"/>
           </a>
       </div>
       );
@@ -158,7 +158,7 @@ class NewQuoteButton extends Component {
   render() {
     return (
       <div id="new-quote-button">
-        <button class="button" id="new-quote" onClick={this.props.updateFnc}>New Quote</button>
+        <button className="button" id="new-quote" onClick={this.props.updateFnc}>New Quote</button>
        </div>
     );
   }
