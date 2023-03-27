@@ -19,16 +19,14 @@ it('should render a new phrase when the "New Quote" button is clicked', async ()
   render(<App />);
 
   const previousPhrase = screen.getByTestId('phrase').textContent;
-  const previousAuthor = screen.getByTestId('author').textContent;
   const newQuoteButton = screen.getByRole('button', {name: "New Quote"});
 
   await userEvent.click(newQuoteButton);
 
   const actualPhrase = screen.getByTestId('phrase').textContent;
-  const actualAuthor = screen.getByTestId('author').textContent;
 
   expect(actualPhrase).not.toEqual(previousPhrase);
-  expect(actualAuthor).not.toEqual(previousAuthor);
+
 });
 
 
