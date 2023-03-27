@@ -123,7 +123,7 @@ class QuoteBox extends Component {
 class Text extends Component {
   render() {
     return (
-      <div id="text">
+      <div id="text" data-testid="phrase">
         {this.props.value}
       </div>
     );
@@ -133,7 +133,7 @@ class Text extends Component {
 class Author extends Component {
   render(){
     return (
-      <div id="author">
+      <div id="author" data-testid="author">
         {this.props.value}
       </div>
     );
