@@ -53,7 +53,8 @@ class QuoteBox extends Component {
   }
 
   componentDidMount = () => {
-    return this.updatePhrase();
+    this.updatePhrase();
+    this.updateColor();
   }
 
   updatePhrase = () => {
