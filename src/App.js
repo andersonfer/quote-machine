@@ -87,9 +87,9 @@ class QuoteBox extends Component {
       <>
         <div id="title">Quote Machine</div>
         <div id="quote-box">
-          <Phrase text={this.state.text} author={this.state.author}/>
+          <Phrase content={this.state.text} author={this.state.author}/>
           <div id="buttons">
-            <TweetButton text={this.state.text} author={this.state.author}/>
+            <TweetButton content={this.state.text} author={this.state.author}/>
             <NewQuoteButton updateFnc={this.updateScreen} />
           </div>
         </div>
@@ -123,11 +123,11 @@ class QuoteBox extends Component {
   }
 }
 
-function Phrase({ text, author }){
+function Phrase({ content, author }){
   return (
     <>
       <div id="text" data-testid="phrase">
-        {text}
+        {content}
       </div>
       <div id="author" data-testid="author">
         {author}
@@ -136,9 +136,9 @@ function Phrase({ text, author }){
   );
 }
 
-function TweetButton({ text, author }){
+function TweetButton({ content, author }){
 
-  const formattedPhraseForTweet = '"' + text + '" (' + author + ')';
+  const formattedPhraseForTweet = '"' + content + '" (' + author + ')';
   const tweetLink = 'https://twitter.com/intent/tweet?text=' + formattedPhraseForTweet;
 
   return (
