@@ -82,7 +82,7 @@ function QuoteBox() {
         <Phrase phrase={phrase.phrase} author={phrase.author}/>
         <div id="buttons">
           <TweetButton phrase={phrase.phrase} author={phrase.author}/>
-          <NewQuoteButton updateFnc={updateScreen} />
+          <NewQuoteButton onClick={updateScreen} />
         </div>
       </div>
     </>
@@ -117,10 +117,10 @@ function TweetButton({ phrase, author }){
   );
 }
 
-function NewQuoteButton({ updateFnc }){
+function NewQuoteButton({ onClick }){
   return (
     <div id="new-quote-button">
-      <button className="button" id="new-quote" onClick={updateFnc}>New Quote</button>
+      <button className="button" id="new-quote" onClick={onClick}>New Quote</button>
     </div>
   );
 }
