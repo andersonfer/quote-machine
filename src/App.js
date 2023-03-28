@@ -41,7 +41,6 @@ export default function App() {
 
 function QuoteBox() {
   const randomPhraseId = Math.floor(Math.random() * PHRASES.length);
-  const randomColorId = Math.floor(Math.random() * COLORS.length);
 
   const randomPhrase = PHRASES[randomPhraseId];
   const [phrase,setPhrase] = useState(randomPhrase);
