@@ -45,10 +45,9 @@ function QuoteBox() {
   const randomColorId = Math.floor(Math.random() * COLORS.length);
   const [content,author] = PHRASES[randomPhraseId];
   const [phrase,setPhrase] = useState({content:content, author:author, id:randomPhraseId});
-  const [color,setColor] = useState(COLORS[randomColorId]);
+  const [color,setColor] = useState('FireBrick');
 
   useEffect(() => {
-    //todo apply the color directly to backgroundColor property
    document.documentElement.style.setProperty('--main-color',color);
   },[color]);
 
