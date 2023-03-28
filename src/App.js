@@ -87,8 +87,7 @@ class QuoteBox extends Component {
       <>
         <div id="title">Quote Machine</div>
         <div id="quote-box">
-          <Text value={this.state.text}/>
-          <Author value={this.state.author}/>
+          <Phrase text={this.state.text} author={this.state.author}/>
           <div id="buttons">
             <TweetButton text={this.state.text} author={this.state.author}/>
             <NewQuoteButton updateFnc={this.updateScreen} />
@@ -124,25 +123,21 @@ class QuoteBox extends Component {
   }
 }
 
-class Text extends Component {
+class Phrase extends Component {
   render() {
     return (
-      <div id="text" data-testid="phrase">
-        {this.props.value}
-      </div>
+      <>
+        <div id="text" data-testid="phrase">
+          {this.props.text}
+        </div>
+        <div id="author" data-testid="author">
+          {this.props.author}
+        </div>
+      </>
     );
   }
 }
 
-class Author extends Component {
-  render(){
-    return (
-      <div id="author" data-testid="author">
-        {this.props.value}
-      </div>
-    );
-  }
-}
 class TweetButton extends Component{
     render() {
       const formattedPhraseForTweet = '"' + this.props.text + '" (' + this.props.author + ')'
