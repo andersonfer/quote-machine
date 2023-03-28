@@ -33,16 +33,39 @@ it('should render a new phrase when the "New Quote" button is clicked', async ()
 
 });
 
+it('should open a new window when the "Tweet" link is clicked', () => {
+  //todo move it to the "render properly test"
+  render(<App />);
+
+  const tweetLink = screen.getByRole('link', {name: /tweet this phrase/i});
+
+  expect(tweetLink.target).toBe('_blank');
+
+});
+
+test('the tweet link should have a phrase in its content', () => {
+  render(<App />);
+
+  const tweetLinkElement = screen.getByRole('link', {name: /tweet this phrase/i});
+  const phraseToBeTweeted = extractPhraseFromHref(tweetLinkElement.href);
+  /* this pattern searches for a string between quotation marks
+  followed by a space and another string between parenthesis */
+  const phraseFormatRegex = /"[a-zA-Z][^"]*"\s\([a-zA-Z][^\)]*\)/
+
+  //todo check it against the actual phrase
+  expect(phraseToBeTweeted).toMatch(phraseFormatRegex);
+
+});
 
 
-//it should open a window to tweet
+extractPhraseFromHref = (str) => {
+  const decodedHref = decodeURIComponent(str);
+  const twitterPrefix = "https://twitter.com/intent/tweet?text=";
 
-//await user.click(screen.getByRole('button', {name: /click me!/i}))
-//screen.getByRole('link');
-//screen.getByRole('button', {name: "New Quote"});
-//screen.getByTestId('tweet-button');
+  return decodedHref.substring(twitterPrefix.length);
+
+}
 
 
-
-//todo refactor without getByTestId
+//todo refactor without getByTestId -- create a should render properly test case
 //todo merge text and author in one component
