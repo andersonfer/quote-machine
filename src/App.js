@@ -41,8 +41,8 @@ export default function App() {
 
 function QuoteBox() {
   const randomPhraseId = Math.floor(Math.random() * PHRASES.length);
-
   const randomPhrase = PHRASES[randomPhraseId];
+
   const [phrase,setPhrase] = useState(randomPhrase);
   const [color,setColor] = useState('FireBrick');
 
@@ -56,14 +56,12 @@ function QuoteBox() {
   }
 
   function generateRandomPhrase() {
-    let randomNumberForPhraseChoice;
+    let randomPhraseId = Math.floor(Math.random() * PHRASES.length);
 
-    do{
-      randomNumberForPhraseChoice = Math.floor(Math.random() * PHRASES.length);
+    while(randomPhraseId === phrase.id){
+      randomPhraseId = Math.floor(Math.random() * PHRASES.length);
     }
-    while (randomNumberForPhraseChoice === phrase.id);
-
-    return PHRASES[randomNumberForPhraseChoice];
+    return PHRASES[randomPhraseId];
   }
 
   function generateRandomColor() {
