@@ -31,16 +31,25 @@ it('should render a new phrase when the "New Quote" button is clicked', async ()
   render(<App />);
 
   const previousPhrase = screen.getByTestId('phrase').textContent;
-  const previousColor = getComputedStyle(document.documentElement).getPropertyValue('--main-color');
-
   const newQuoteButton = screen.getByRole('button', {name: "New Quote"});
 
   await userEvent.click(newQuoteButton);
 
   const actualPhrase = screen.getByTestId('phrase').textContent;
-  const actualColor = getComputedStyle(document.documentElement).getPropertyValue('--main-color');
-
   expect(actualPhrase).not.toEqual(previousPhrase);
+
+
+});
+
+it('should change the background color when the "New Quote" button is clicked', async () => {
+  render(<App />);
+
+  const previousColor = getComputedStyle(document.documentElement).getPropertyValue('--main-color');
+  const newQuoteButton = screen.getByRole('button', {name: "New Quote"});
+
+  await userEvent.click(newQuoteButton);
+
+  const actualColor = getComputedStyle(document.documentElement).getPropertyValue('--main-color');
   expect(actualColor).not.toEqual(previousColor);
 
 });
