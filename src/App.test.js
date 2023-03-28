@@ -5,6 +5,13 @@ import App from './App';
 
 const LETTER_FOLLOWED_BY_ANYTHING_REGEX = /\S.*/;
 
+it('should render a title', () => {
+  render(<App />);
+
+  screen.getByText(/quote machine/i);
+
+});
+
 it('should render a phrase on startup', () => {
   render(<App />);
 

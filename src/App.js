@@ -84,14 +84,17 @@ class QuoteBox extends Component {
 
   render() {
     return (
-      <div id="quote-box">
-        <Text value={this.state.text}/>
-        <Author value={this.state.author}/>
-        <div id="buttons">
-          <TweetButton text={this.state.text} author={this.state.author}/>
-          <NewQuoteButton updateFnc={this.updateScreen} />
+      <>
+        <div id="title">Quote Machine</div>
+        <div id="quote-box">
+          <Text value={this.state.text}/>
+          <Author value={this.state.author}/>
+          <div id="buttons">
+            <TweetButton text={this.state.text} author={this.state.author}/>
+            <NewQuoteButton updateFnc={this.updateScreen} />
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 

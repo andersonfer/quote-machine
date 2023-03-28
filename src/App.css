@@ -6,9 +6,16 @@
   background-color:var(--main-color);
   height:calc(100vh);
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   transition: background-color 1s ease-out;
+}
+#title{
+  font-size: 2em;
+  color:GhostWhite;
+  margin-top: -1em;
+  margin-bottom: 1em;
 }
 #quote-box{
   background-color:GhostWhite;
