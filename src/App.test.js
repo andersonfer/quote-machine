@@ -12,7 +12,6 @@ it('should render properly', () => {
   screen.getByTestId('author');
   screen.getByRole('button', {name: "New Quote"});
   screen.getByRole('link', {name: /tweet this phrase/i});
-
 });
 
 it('should render a phrase on startup', () => {
@@ -26,7 +25,6 @@ it('should render a phrase on startup', () => {
     .toHaveTextContent(letter_followed_by_anything_regex);
 });
 
-
 it('should render a new phrase when the "New Quote" button is clicked', async () => {
   render(<App />);
 
@@ -37,8 +35,6 @@ it('should render a new phrase when the "New Quote" button is clicked', async ()
 
   const actualPhrase = screen.getByTestId('phrase').textContent;
   expect(actualPhrase).not.toEqual(previousPhrase);
-
-
 });
 
 it('should change the background color when the "New Quote" button is clicked', async () => {
@@ -55,13 +51,10 @@ it('should change the background color when the "New Quote" button is clicked', 
 });
 
 it('should open a new window when the "Tweet" link is clicked', () => {
-  //todo move it to the "render properly test"
   render(<App />);
 
   const tweetLink = screen.getByRole('link', {name: /tweet this phrase/i});
-
   expect(tweetLink.target).toBe('_blank');
-
 });
 
 test('the tweet link should have a phrase in its content', () => {
@@ -75,16 +68,11 @@ test('the tweet link should have a phrase in its content', () => {
 
   //todo check it against the actual phrase
   expect(phraseToBeTweeted).toMatch(phraseFormatRegex);
-
 });
-
 
 extractPhraseFromHref = (href) => {
   const decodedHref = decodeURIComponent(href);
   const twitterPrefix = "https://twitter.com/intent/tweet?text=";
 
   return decodedHref.substring(twitterPrefix.length);
-
 }
-
-//todo merge text and author in one component
