@@ -150,16 +150,12 @@ function TweetButton({ text, author }){
   );
 }
 
-
-class NewQuoteButton extends Component {
-  render() {
-    return (
-      <div id="new-quote-button">
-        <button className="button" id="new-quote" onClick={this.props.updateFnc}>New Quote</button>
-       </div>
-    );
-  }
+function NewQuoteButton({ updateFnc }){
+  return (
+    <div id="new-quote-button">
+      <button className="button" id="new-quote" onClick={updateFnc}>New Quote</button>
+    </div>
+  );
 }
-
 
 export default App;
