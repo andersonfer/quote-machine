@@ -65,13 +65,13 @@ function QuoteBox() {
   }
 
   function generateRandomColor() {
-    let randomColor;
+    let randomColorId = Math.floor(Math.random() * COLORS.length);
+    let randomColor = COLORS[randomColorId];
 
-    do{
-      let randomNumberForColorChoice = Math.floor(Math.random() * COLORS.length);
-      randomColor = COLORS[randomNumberForColorChoice];
+    while (randomColor === color){
+      randomColorId = Math.floor(Math.random() * COLORS.length);
+      randomColor = COLORS[randomColorId];
     }
-    while (randomColor === color);
     return randomColor;
   }
 
