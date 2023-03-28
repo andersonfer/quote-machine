@@ -28,8 +28,8 @@ it('should render a phrase on startup', () => {
 it('should render a new phrase when the "New Quote" button is clicked', async () => {
   render(<App />);
 
-  const previousPhrase = screen.getByTestId('phrase').textContent;
   const newQuoteButton = screen.getByRole('button', {name: "New Quote"});
+  const previousPhrase = screen.getByTestId('phrase').textContent;
 
   await userEvent.click(newQuoteButton);
 
@@ -40,14 +40,16 @@ it('should render a new phrase when the "New Quote" button is clicked', async ()
 it('should change the background color when the "New Quote" button is clicked', async () => {
   render(<App />);
 
-  const previousColor = getComputedStyle(document.documentElement).getPropertyValue('--main-color');
   const newQuoteButton = screen.getByRole('button', {name: "New Quote"});
+  const previousColor =
+    getComputedStyle(document.documentElement).getPropertyValue('--main-color');
 
   await userEvent.click(newQuoteButton);
 
-  const actualColor = getComputedStyle(document.documentElement).getPropertyValue('--main-color');
-  expect(actualColor).not.toEqual(previousColor);
+  const actualColor =
+    getComputedStyle(document.documentElement).getPropertyValue('--main-color');
 
+  expect(actualColor).not.toEqual(previousColor);
 });
 
 it('should open a new window when the "Tweet" link is clicked', () => {
@@ -66,7 +68,6 @@ test('the tweet link should have a phrase in its content', () => {
   followed by a space and another string between parenthesis */
   const phraseFormatRegex = /"[a-zA-Z][^"]*"\s\([a-zA-Z][^\)]*\)/
 
-  //todo check it against the actual phrase
   expect(phraseToBeTweeted).toMatch(phraseFormatRegex);
 });
 
