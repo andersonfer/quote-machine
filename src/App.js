@@ -138,20 +138,20 @@ class Phrase extends Component {
   }
 }
 
-class TweetButton extends Component{
-    render() {
-      const formattedPhraseForTweet = '"' + this.props.text + '" (' + this.props.author + ')'
-      const tweetLink = 'https://twitter.com/intent/tweet?text=' + formattedPhraseForTweet;
+function TweetButton({ text, author }){
 
-      return (
-        <div id="twitter-button">
-          <a className="button" href={tweetLink} id="tweet-quote" target="_blank" rel="noreferrer" title="Tweet this phrase">
-            <span className="fa fa-twitter"/>
-          </a>
-      </div>
-      );
-    }
+  const formattedPhraseForTweet = '"' + text + '" (' + author + ')';
+  const tweetLink = 'https://twitter.com/intent/tweet?text=' + formattedPhraseForTweet;
+
+  return (
+    <div id="twitter-button">
+      <a className="button" href={tweetLink} id="tweet-quote" target="_blank" rel="noreferrer" title="Tweet this phrase">
+        <span className="fa fa-twitter"/>
+      </a>
+    </div>
+  );
 }
+
 
 class NewQuoteButton extends Component {
   render() {
