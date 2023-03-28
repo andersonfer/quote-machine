@@ -123,19 +123,17 @@ class QuoteBox extends Component {
   }
 }
 
-class Phrase extends Component {
-  render() {
-    return (
-      <>
-        <div id="text" data-testid="phrase">
-          {this.props.text}
-        </div>
-        <div id="author" data-testid="author">
-          {this.props.author}
-        </div>
-      </>
-    );
-  }
+function Phrase({ text, author }){
+  return (
+    <>
+      <div id="text" data-testid="phrase">
+        {text}
+      </div>
+      <div id="author" data-testid="author">
+        {author}
+      </div>
+    </>
+  );
 }
 
 function TweetButton({ text, author }){
