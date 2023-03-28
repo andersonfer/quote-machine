@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 
 import App from './App';
 
-const LETTER_FOLLOWED_BY_ANYTHING_REGEX = /\S.*/;
 
 it('should render properly', () => {
   render(<App />);
@@ -19,10 +18,12 @@ it('should render properly', () => {
 it('should render a phrase on startup', () => {
   render(<App />);
 
+  const letter_followed_by_anything_regex = /^[a-zA-Z].*$/;
+
   expect(screen.getByTestId('phrase'))
-    .toHaveTextContent(LETTER_FOLLOWED_BY_ANYTHING_REGEX);
+    .toHaveTextContent(letter_followed_by_anything_regex);
   expect(screen.getByTestId('author'))
-    .toHaveTextContent(LETTER_FOLLOWED_BY_ANYTHING_REGEX);
+    .toHaveTextContent(letter_followed_by_anything_regex);
 });
 
 
@@ -77,6 +78,4 @@ extractPhraseFromHref = (href) => {
 
 }
 
-
-//todo refactor without getByTestId -- create a should render properly test case
 //todo merge text and author in one component
