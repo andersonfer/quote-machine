@@ -35,10 +35,8 @@ const COLORS = [
   'FireBrick'
 ];
 
-class App extends Component {
-  render() {
-    return <QuoteBox />;
-  }
+export default function App() {
+  return <QuoteBox />;
 }
 
 class QuoteBox extends Component {
@@ -157,5 +155,3 @@ function NewQuoteButton({ updateFnc }){
     </div>
   );
 }
-
-export default App;
