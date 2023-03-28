@@ -26,7 +26,6 @@ const PHRASES = [
 const COLORS = [
   'LightSlateGray',
   'CadetBlue',
-  'DarkKhaki',
   'DarkSeaGreen',
   'SteelBlue',
   'OliveDrab',
