@@ -147,7 +147,7 @@ class TweetButton extends Component{
 
       return (
         <div id="twitter-button">
-          <a className="button" href={tweetLink} id="tweet-quote" target="_blank" rel="noreferrer">
+          <a className="button" href={tweetLink} id="tweet-quote" target="_blank" rel="noreferrer" title="Tweet this phrase">
             <span className="fa fa-twitter"/>
           </a>
       </div>
