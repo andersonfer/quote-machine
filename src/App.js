@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 
-const PHRASES = [
+const QUOTES = [
   {"id":0,"phrase":"L'homme est un loup pour l'homme.","author":"Plaute"},
   {"id":1,"phrase":"Il m'a fait trop de bien pour en dire du mal, - Il m'a fait trop de mal pour en dire du bien.","author":"Pierre Corneille"},
   {"id":2,"phrase":"Rien de grand ne s'est accompli dans le monde sans passion.","author":"Georg Wilhelm Friedrich Hegel"},
@@ -40,10 +40,10 @@ export default function App() {
 }
 
 function QuoteBox() {
-  const randomPhraseId = Math.floor(Math.random() * PHRASES.length);
-  const randomPhrase = PHRASES[randomPhraseId];
+  const randomQuoteId = Math.floor(Math.random() * QUOTES.length);
+  const randomQuote = QUOTES[randomQuoteId];
 
-  const [phrase,setPhrase] = useState(randomPhrase);
+  const [quote,setQuote] = useState(randomQuote);
   const [color,setColor] = useState('FireBrick');
 
   useEffect(() => {
@@ -51,17 +51,17 @@ function QuoteBox() {
   },[color]);
 
   function updateScreen() {
-    setPhrase(generateRandomPhrase());
+    setQuote(generateRandomQuote());
     setColor(generateRandomColor());
   }
 
-  function generateRandomPhrase() {
-    let randomPhraseId = Math.floor(Math.random() * PHRASES.length);
+  function generateRandomQuote() {
+    let randomQuoteId = Math.floor(Math.random() * QUOTES.length);
 
-    while(randomPhraseId === phrase.id){
-      randomPhraseId = Math.floor(Math.random() * PHRASES.length);
+    while(randomQuoteId === quote.id){
+      randomQuoteId = Math.floor(Math.random() * QUOTES.length);
     }
-    return PHRASES[randomPhraseId];
+    return QUOTES[randomQuoteId];
   }
 
   function generateRandomColor() {
@@ -79,9 +79,9 @@ function QuoteBox() {
     <>
       <div id="title">Quote Machine</div>
       <div id="quote-box">
-        <Phrase phrase={phrase.phrase} author={phrase.author}/>
+        <Quote phrase={quote.phrase} author={quote.author}/>
         <div id="buttons">
-          <TweetButton phrase={phrase.phrase} author={phrase.author}/>
+          <TweetButton phrase={quote.phrase} author={quote.author}/>
           <NewQuoteButton onClick={updateScreen} />
         </div>
       </div>
@@ -90,7 +90,7 @@ function QuoteBox() {
 
 }
 
-function Phrase({ phrase, author }){
+function Quote({ phrase, author }){
   return (
     <>
       <div id="phrase" data-testid="phrase">
