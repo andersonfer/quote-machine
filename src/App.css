@@ -32,15 +32,15 @@
   justify-content:center;
   transition: color 1s ease-out;
 }
-#text{
+#phrase{
   font-size:2rem;
 
 }
-#text::before{
+#phrase::before{
   content:'\" ';
   font-family: 'Rockwell Extra Bold';
 }
-#text::after{
+#phrase::after{
   content:'\ " ';
   font-family: 'Rockwell Extra Bold';
 }
