@@ -58,8 +58,8 @@ test('the tweet link should have a phrase in its content', () => {
 });
 
 
-extractPhraseFromHref = (str) => {
-  const decodedHref = decodeURIComponent(str);
+extractPhraseFromHref = (href) => {
+  const decodedHref = decodeURIComponent(href);
   const twitterPrefix = "https://twitter.com/intent/tweet?text=";
 
   return decodedHref.substring(twitterPrefix.length);
