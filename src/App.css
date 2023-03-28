@@ -12,10 +12,12 @@
   transition: background-color 1s ease-out;
 }
 #title{
-  font-size: 2em;
+  font-size: 2.5em;
+  font-weight: bold;
   color:GhostWhite;
   margin-top: -1em;
   margin-bottom: 1em;
+
 }
 #quote-box{
   background-color:GhostWhite;
