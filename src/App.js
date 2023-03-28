@@ -1,5 +1,6 @@
 import './App.css';
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
+
 
 const PHRASES = [
   ['L\'homme est un loup pour l\'homme.','Plaute'],
@@ -39,86 +40,62 @@ export default function App() {
   return <QuoteBox />;
 }
 
-class QuoteBox extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      text: '',
-      author: '',
-      phraseId:0,
-      color:'FireBrick'
-    }
+function QuoteBox() {
+  const randomPhraseId = Math.floor(Math.random() * PHRASES.length);
+  const randomColorId = Math.floor(Math.random() * COLORS.length);
+  const [content,author] = PHRASES[randomPhraseId];
+  const [phrase,setPhrase] = useState({content:content, author:author, id:randomPhraseId});
+  const [color,setColor] = useState(COLORS[randomColorId]);
+
+  useEffect(() => {
+    //todo apply the color directly to backgroundColor property
+   document.documentElement.style.setProperty('--main-color',color);
+  },[color]);
+
+  function updateScreen() {
+    setPhrase(generateRandomPhrase());
+    setColor(generateRandomColor());
   }
 
-  componentDidMount = () => {
-    this.updatePhrase();
-    this.updateColor();
-  }
-
-  updatePhrase = () => {
-    const phrase = this.generateRandomPhrase();
-
-    this.setState({
-      text:phrase.text,
-      author:phrase.author,
-      phraseId:phrase.id
-    });
-  };
-
-  generateRandomPhrase = () => {
+  function generateRandomPhrase() {
     let randomNumberForPhraseChoice;
 
     do{
       randomNumberForPhraseChoice = Math.floor(Math.random() * PHRASES.length);
     }
-    while (randomNumberForPhraseChoice === this.state.phraseId);
-    const [text,author] = PHRASES[randomNumberForPhraseChoice];
+    while (randomNumberForPhraseChoice === phrase.id);
+    const [content,author] = PHRASES[randomNumberForPhraseChoice];
     return {
-      text:text,
+      content:content,
       author:author,
       id:randomNumberForPhraseChoice
     };
   }
 
-  render() {
-    return (
-      <>
-        <div id="title">Quote Machine</div>
-        <div id="quote-box">
-          <Phrase content={this.state.text} author={this.state.author}/>
-          <div id="buttons">
-            <TweetButton content={this.state.text} author={this.state.author}/>
-            <NewQuoteButton updateFnc={this.updateScreen} />
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  updateScreen = () => {
-    this.updatePhrase();
-    this.updateColor();
-  }
-
-  updateColor = () => {
-    const randomColor = this.generateRandomColor();
-
-    this.setState({
-      color:randomColor
-    })
-    document.documentElement.style.setProperty("--main-color", randomColor);
-  };
-
-  generateRandomColor = () => {
+  function generateRandomColor() {
     let randomColor;
 
     do{
       let randomNumberForColorChoice = Math.floor(Math.random() * COLORS.length);
       randomColor = COLORS[randomNumberForColorChoice];
     }
-    while (randomColor === this.state.color);
+    while (randomColor === color);
     return randomColor;
   }
+
+  return (
+    <>
+      <div id="title">Quote Machine</div>
+      <div id="quote-box">
+        <Phrase content={phrase.content} author={phrase.author}/>
+        <div id="buttons">
+          <TweetButton content={phrase.content} author={phrase.author}/>
+          <NewQuoteButton updateFnc={updateScreen} />
+        </div>
+      </div>
+    </>
+  );
+
 }
 
 function Phrase({ content, author }){
